@@ -1,102 +1,141 @@
- # Powered by @Darkranger00 | TELE:- @aadillllll
-# Dear Pero ppls Plish Don't remove this line from here🌚
-# created by Aadil Shiekh
-import logging
-import re
 import os
-import sys, platform
-# import functie as S
-from asyncio import sleep
+
+import logging
+
+from config import BOT_USERNAME
+
 from os import getenv
-from dotenv import load_dotenv
-from telethon import TelegramClient, events, Button
-import telethon.utils
-from telethon.tl import functions
-from telethon.tl.functions.channels import LeaveChannelRequest
-from asyncio import sleep
-from telethon import __version__ as tel
-from str import dad as gg, dady as g, startxt2, startxt, hlptxt
-from telethon.tl.types import ChatBannedRights, ChannelParticipantsAdmins, ChatAdminRights
-from telethon.tl.functions.channels import EditBannedRequest
-from datetime import datetime
 
-#Logging...
+from pyrogram import Client, filters, idle
+
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+
+from pyrogram.errors import ChatAdminRequired
+
+
+
 logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+
+    level=logging.DEBUG,
+
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
 )
-API_ID = "10738943"
-API_HASH = "da61e3a08b5ac78ce28b4a4cd854aeec"
-BOT_TOKEN = "7269425990:AAElkYfpjGBp0rI2sLtRb83lKLIK7IMhrYk"
-OWNER_ID = "8016828914"
-SUDO_ID = "8016828914"
-LUCIFER = "8016828914"
-COWNER_ID = "8016828914"
-OP  = [ int(OWNER_ID), int(SUDO_ID), int(COWNER_ID), int(LUCIFER)]
-#TelegramClient..
-sree = TelegramClient(
-    "BanAll",
-    api_id=API_ID,
-    api_hash=API_HASH
-).start(bot_token=BOT_TOKEN)
 
-Owner = "@Arayanlarbulamadi"
-repo = "https://github.com/Darkanger00/Banall"
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
-      
+
+# config vars
+
+API_ID = int(os.getenv("25504446"))
+
+API_HASH = os.getenv("47db27cde56c3e4690e244e6de10f919")
+
+BOT_TOKEN = os.getenv("7269425990:AAElkYfpjGBp0rI2sLtRb83lKLIK7IMhrYk")
+
+OWNER = os.getenv("@Arayanlarbulamadi")
+
+
+
+# pyrogram client
+
+app = Client(
+
+            "banall",
+
+            api_id=API_ID,
+
+            api_hash=API_HASH,
+
+            bot_token=BOT_TOKEN,
+
+)
+
+
 
 @app.on_message(
-    filters.command("b") 
-    & filters.group
+
+    filters.command("start")
+
+    & filters.private
+
 )
-async def banall_command(client: Client, message: Message):
-    chat_id = message.chat.id
-    bot = await client.get_me()  # Bot ka ID aur admin status check karne ke liye
-    bot_id = bot.id
 
-    print(f"Checking bot permissions in {chat_id}...")
+async def start_command(client, message: Message):
 
-    # Pehle check karo ki bot admin hai ya nahi
-    chat_member = await client.get_chat_member(chat_id, bot_id)
-    if chat_member.status not in ["administrator", "creator"]:
-        print("Bot is not an admin! Make the bot an admin with 'Ban Members' permission.")
-        await message.reply_text("❌ Bot is not an admin! Please give me 'Ban Members' permission.")
-        return
+    user = message.from_user
 
-    print(f"Bot is admin in {chat_id}. Starting ban process...")
+    await message.reply_photo(
 
-    async for member in client.get_chat_members(chat_id):
-        user_id = member.user.id
+        photo=f"https://files.catbox.moe/qej5mx.jpg",
 
-        # Self-ban prevent
-        if user_id == bot_id:
-            print("Skipping self-ban attempt.")
-            continue
+        caption=f"**✦ » ʜᴇʏ {user.mention}**\n**✦ » ᴛʜɪs ɪs ᴀ sɪᴍᴘʟᴇ ʙᴀɴ ᴀʟʟ ʙᴏᴛ ᴡʜɪᴄʜ ɪs ʙᴀsᴇᴅ ᴏɴ ᴘʏʀᴏɢʀᴀᴍ ʟɪʙʀᴀʀʏ.**\n\n**✦ » ʙᴀɴ ᴏʀ ᴅᴇsᴛʀᴏʏ ᴀʟʟ ᴛʜᴇ ᴍᴇᴍʙᴇʀs ғʀᴏᴍ ᴀ ɢʀᴏᴜᴘ ᴡɪᴛʜ ɪɴ ᴀ ғᴇᴡ sᴇᴄᴏɴᴅs.**\n\n**✦ » ᴄʜᴇᴄᴋ ᴍʏ ᴀʙɪʟɪᴛʏ ɢɪᴠᴇ ᴍᴇ ғᴜʟʟ ᴘᴏᴡᴇʀs ᴀɴᴅ ᴛʏᴘᴇ `/banall` ᴛᴏ ꜱᴇᴇ ᴍᴀɢɪᴄ ɪɴ ɢʀᴏᴜᴘ.**\n\n**✦ » 𝐏ᴏᴡᴇʀᴇᴅ 𝖡ʏ »  <a href=t.me/ll_ALPHA_BABY_lll>⎯᪵፝֟፝֟⎯꯭𓆩꯭ 𝐀 ꯭ʟ ꯭ᴘ ꯭ʜ꯭ ᴧ꯭⎯꯭꯭꯭̽🥂꯭༎꯭ 𓆪꯭ </a>**",
 
-        # Admins ko skip karo
-        if member.status in ["administrator", "creator"]:
-            print(f"Skipping admin {user_id}")
-            continue
+        reply_markup=InlineKeyboardMarkup(
+
+            [
+
+                [
+
+                    InlineKeyboardButton(
+
+                        "⚜️ Aᴅᴅ ᴍᴇ Bᴀʙʏ ⚜️", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
+
+                    )
+
+                ],
+
+                [
+
+                    InlineKeyboardButton("🔸 ❍ᴡɴᴇʀ🔸", url="http://t.me/ll_ALPHA_BABY_lll"),
+
+                    InlineKeyboardButton("▫️ 𝗨ᴘᴅᴀᴛᴇs ▫️", url="http://t.me/PURVI_SUPPORT")
+
+                ]                
+
+            ]
+
+        )
+
+    )
+
+
+
+@app.on_message(
+
+filters.command("banall") 
+
+& filters.group
+
+)
+
+async def banall_command(client, message: Message):
+
+    print("getting memebers from {}".format(message.chat.id))
+
+    async for i in app.get_chat_members(message.chat.id):
 
         try:
-            await client.ban_chat_member(chat_id=chat_id, user_id=user_id)
-            print(f"Banned {user_id} from {chat_id}")
+
+            await app.ban_chat_member(chat_id = message.chat.id, user_id = i.user.id)
+
+            print("kicked {} from {}".format(i.user.id, message.chat.id))
+
         except Exception as e:
-            print(f"Failed to ban {user_id}: {e}")
-            await message.reply_text(f"❌ Failed to ban {user_id}: {e}")
 
-    print("Ban process completed.")
-    await message.reply_text("✅ All non-admin members have been banned!")
+            print("failed to kicked {} from {}".format(i.user.id, e))           
 
+    print("process completed")
 
-
+    
 
 
 
+# start bot client
 
-print("Your Bot  Deployed Successfully ✅")
-print("Join @crushbot_support if you facing any kind of issue!!")
+app.start()
 
+print("Banall-Bot Booted Successfully")
 
-
-sree.run_until_disconnected()
+idle()
