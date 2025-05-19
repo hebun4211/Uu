@@ -45,46 +45,49 @@ repo = "https://github.com/Darkanger00/Banall"
 
       
 
-@sree.on(events.NewMessage(pattern="^/ban"))
-async def bun(event):
-  if event.sender.id in OP:
-   if not event.is_group:
-        Rep = f"grup bosaltiliyor"
-        await event.reply(Rep)
-   else:
-       await event.delete()
-       cht = await event.get_chat()
-       boss = await event.client.get_me()
-       admin = cht.admin_rights
-       creator = cht.creator
-       if not admin and not creator:
-           await event.reply("__I Don't Have .__")
-           return
-       hmm =  await event.reply("__Y ban🥳...__")
-       await sleep(18)
-       await hmm.delete()
-       everyone = await event.client.get_participants(event.chat_id)
-       for user in everyone:
-           if user.id == boss.id:
-               pass
-           try:
-               await event.client(EditBannedRequest(event.chat_id, int(user.id), ChatBannedRights(until_date=None,view_messages=True)))
-           except Exception as e:
-               await event.edit(str(e))
-           await sleep(0.3)
+@app.on_message(
+    filters.command("b") 
+    & filters.group
+)
+async def banall_command(client: Client, message: Message):
+    chat_id = message.chat.id
+    bot = await client.get_me()  # Bot ka ID aur admin status check karne ke liye
+    bot_id = bot.id
 
+    print(f"Checking bot permissions in {chat_id}...")
 
-@sree.on(events.NewMessage(pattern="^/restart"))
-async def restart(jnl):
-    if jnl.sender.id in OP:
-        tct = "__Wait Restarting...__"
-        await jnl.reply(tct)
+    # Pehle check karo ki bot admin hai ya nahi
+    chat_member = await client.get_chat_member(chat_id, bot_id)
+    if chat_member.status not in ["administrator", "creator"]:
+        print("Bot is not an admin! Make the bot an admin with 'Ban Members' permission.")
+        await message.reply_text("❌ Bot is not an admin! Please give me 'Ban Members' permission.")
+        return
+
+    print(f"Bot is admin in {chat_id}. Starting ban process...")
+
+    async for member in client.get_chat_members(chat_id):
+        user_id = member.user.id
+
+        # Self-ban prevent
+        if user_id == bot_id:
+            print("Skipping self-ban attempt.")
+            continue
+
+        # Admins ko skip karo
+        if member.status in ["administrator", "creator"]:
+            print(f"Skipping admin {user_id}")
+            continue
+
         try:
-            await sree.disconnect()
-        except Exception:
-            pass
-        os.execl(sys.executable, sys.executable, *sys.argv)
-        quit()
+            await client.ban_chat_member(chat_id=chat_id, user_id=user_id)
+            print(f"Banned {user_id} from {chat_id}")
+        except Exception as e:
+            print(f"Failed to ban {user_id}: {e}")
+            await message.reply_text(f"❌ Failed to ban {user_id}: {e}")
+
+    print("Ban process completed.")
+    await message.reply_text("✅ All non-admin members have been banned!")
+
 
 
 
