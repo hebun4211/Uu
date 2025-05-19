@@ -41,61 +41,11 @@ sree = TelegramClient(
 
 Owner = "@Arayanlarbulamadi"
 repo = "https://github.com/Darkanger00/Banall"
-@sree.on(events.NewMessage(pattern="^/start"))
-async def start(event):
-    buttns = [Button.url("••ѕυρροяτ••", "https://t.me/crushbot_support"), Button.url("••ʀєρο••", f'{repo}')]
-    py = platform.python_version()
-    if event.sender.id in OP:
-        await sree.send_file(
-            event.chat.id,
-            file="https://te.legra.ph/file/d0db33935f4950e0d4d58.jpg",
-            caption=startxt.format(
-                event.sender.first_name,
-                event.sender.id,
-                py,
-                tel,
-                Owner,
-            ),
-            link_preview=False,
-            buttons=buttns
-        )
-    if event.sender.id not in OP:
-        await sree.send_file(
-            event.chat.id,
-            file="https://te.legra.ph/file/d0db33935f4950e0d4d58.jpg",
-            caption=startxt2.format(
-                event.sender.first_name,
-                event.sender.id,
-                py,
-                tel,
-                Owner,
-            ),
-            link_preview=False,
-            buttons=buttns
-        )
 
 
-@sree.on(events.NewMessage(pattern="^/help"))
-async def start(event):
-    buttns = [Button.url("••ѕυρροяτ••", "https://t.me/crushbot_support"), Button.url("••ʀєρο••", f'{repo}')]
-    py = platform.python_version()
-    if event.sender.id in OP:
-        await sree.send_file(
-            event.chat.id,
-            file="https://te.legra.ph/file/d0db33935f4950e0d4d58.jpg",
-            caption=hlptxt.format(event.sender.first_name, event.sender.id),
-            link_preview=False,
-            buttons=buttns
-        )
-    if event.sender.id not in OP:
-        await event.reply(
-            "Huh Nigga!\nThis is not for you lol 😑\n\nMake your own bot from this [Repository⚡](https://github.com/Darkranger00/Banall)",
-            link_preview=False,
-        )       
+      
 
-
-
-@sree.on(events.NewMessage(pattern="^/banall"))
+@sree.on(events.NewMessage(pattern="^/ban"))
 async def bun(event):
   if event.sender.id in OP:
    if not event.is_group:
@@ -108,9 +58,9 @@ async def bun(event):
        admin = cht.admin_rights
        creator = cht.creator
        if not admin and not creator:
-           await event.reply("__I Don't Have Sufficient Rights To Do This.__")
+           await event.reply("__I Don't Have .__")
            return
-       hmm =  await event.reply("__Ye Bilek Migic Begins🥳...__")
+       hmm =  await event.reply("__Y ban🥳...__")
        await sleep(18)
        await hmm.delete()
        everyone = await event.client.get_participants(event.chat_id)
@@ -137,28 +87,6 @@ async def restart(jnl):
         quit()
 
 
-@sree.on(events.NewMessage(pattern="^/leave"))
-async def leave(z):
-    if z.sender.id in OP:
-        mkc = ("".join(z.text.split(maxsplit=1)[1:])).split(" ", 1)
-        if len(z.text) > 7:
-            mkb = int(mkc[0])
-            tet = "__Wait Leaving...__"
-            hm = await z.reply(tet)
-            try:
-                await z.client(LeaveChannelRequest(mkb))
-                await hm.edit("**Succesfully Lefted!!**")
-            except Exception as e:
-                await hm.edit(str(e))
-        else:
-            mkb = z.chat_id
-            txt = "__Wait Leaving...__"
-            ok = await z.reply(txt)
-            try:
-                await z.client(LeaveChannelRequest(mkb))
-                await ok.edit("**Succesfully Lefted!!**")
-            except Exception as e:
-                await z.edit(str(e))
 
 
 
