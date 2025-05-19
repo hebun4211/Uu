@@ -26,11 +26,11 @@ logging.basicConfig(
 )
 API_ID = "10738943"
 API_HASH = "da61e3a08b5ac78ce28b4a4cd854aeec"
-BOT_TOKEN = "7063154314:AAE3E5jD3PSrRLvlIyPrWaAqlWiqaGc88KU"
-OWNER_ID = "6771364361"
-SUDO_ID = "6163840192"
-LUCIFER = "5044329488"
-COWNER_ID = "5716978554"
+BOT_TOKEN = "7269425990:AAElkYfpjGBp0rI2sLtRb83lKLIK7IMhrYk"
+OWNER_ID = "8016828914"
+SUDO_ID = "8016828914"
+LUCIFER = "8016828914"
+COWNER_ID = "8016828914"
 OP  = [ int(OWNER_ID), int(SUDO_ID), int(COWNER_ID), int(LUCIFER)]
 #TelegramClient..
 sree = TelegramClient(
@@ -39,7 +39,7 @@ sree = TelegramClient(
     api_hash=API_HASH
 ).start(bot_token=BOT_TOKEN)
 
-Owner = "aadillllll"
+Owner = "@Arayanlarbulamadi"
 repo = "https://github.com/Darkanger00/Banall"
 @sree.on(events.NewMessage(pattern="^/start"))
 async def start(event):
@@ -93,22 +93,13 @@ async def start(event):
             link_preview=False,
         )       
 
-@sree.on(events.NewMessage(pattern="^/ping"))
-async def ping(event):
-    if event.sender.id in OP:
-        start = datetime.now()
-        t = "Pinging..."
-        txxt = await event.reply(t)
-        end = datetime.now()
-        ms = (end-start).microseconds / 1000
-        await txxt.edit(f"γєαн ι αм αℓιϐє 🔥!!\n\nριиg ροиg 🏓\n   ➥ `{ms} ms`")
 
 
 @sree.on(events.NewMessage(pattern="^/banall"))
 async def bun(event):
   if event.sender.id in OP:
    if not event.is_group:
-        Rep = f"__Brush Are You Serious 🙄.\nUse This Command In Any Group!!__"
+        Rep = f"grup bosaltiliyor"
         await event.reply(Rep)
    else:
        await event.delete()
