@@ -9,3 +9,4 @@ idna==3.10
 pyTelegramBotAPI==4.26.0
 requests==2.31.0
 urllib3==2.4.0
+config
