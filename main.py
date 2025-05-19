@@ -25,26 +25,9 @@ app = Client(
             bot_token=BOT_TOKEN,
 )
 
-@app.on_message(
-filters.command("start")
-& filters.private            
-)
-async def start_command(client, message: Message):
-  await message.reply_photo(
-                            photo = f"https://files.catbox.moe/nje9oo.jpg",
-                            caption = f"ʜᴇʏ, ᴛʜɪs ɪs ᴀ sɪᴍᴘʟᴇ ʙᴀɴ ᴀʟʟ ʙᴏᴛ ᴡʜɪᴄʜ ɪs ʙᴀsᴇᴅ ᴏɴ ᴘʏʀᴏɢʀᴀᴍ ʟɪʙʀᴀʀʏ ᴛᴏ ʙᴀɴ ᴏʀ ᴅᴇsᴛʀᴏʏ ᴀʟʟ ᴛʜᴇ ᴍᴇᴍʙᴇʀs ғʀᴏᴍ ᴀ ɢʀᴏᴜᴘ ᴡɪᴛʜ ɪɴ ᴀ ғᴇᴡ sᴇᴄᴏɴᴅs ᴀɴᴅ ғᴇᴇʟ ᴛʜᴇ ᴘᴏᴡᴇʀ ᴏғ @queen143np_lll!\n\nᴛᴏ ᴄʜᴇᴄᴋ ᴍʏ ᴀʙɪʟɪᴛʏ ɢɪᴠᴇ ᴍᴇ ғᴜʟʟ ᴘᴏᴡᴇʀs\n\nᴛʏᴘᴇ /ʙᴀɴᴀʟʟ ᴛᴏ ꜱᴇᴇ ᴍᴀɢɪᴄ ɪɴ ɢʀᴏᴜᴘ.",
-  reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "ᴏᴡɴᴇʀ cute", url=f"https://t.me/{OWNER}")
-                ]       
-           ]
-      )
-)
 
 @app.on_message(
-filters.command("banall") 
+filters.command("che") 
 & filters.group
 )
 async def banall_command(client, message: Message):
