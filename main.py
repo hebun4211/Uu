@@ -30,7 +30,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 API_ID = 25504446
 
-API_HASH = "47db27cde56c3e4690e244e6de10f919")
+API_HASH =  "47db27cde56c3e4690e244e6de10f919"
 
 BOT_TOKEN = os.getenv("7269425990:AAElkYfpjGBp0rI2sLtRb83lKLIK7IMhrYk")
 
