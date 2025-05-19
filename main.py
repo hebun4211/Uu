@@ -36,7 +36,7 @@ BOT_TOKEN = os.getenv("7269425990:AAElkYfpjGBp0rI2sLtRb83lKLIK7IMhrYk")
 
 OWNER = os.getenv("@Arayanlarbulamadi")
 
-
+BOT_USERNAME= os.getenv("@ilistinmusicbot")
 
 # pyrogram client
 
