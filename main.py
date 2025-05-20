@@ -11,16 +11,17 @@ logging.basicConfig(
 )
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
+# config vars
 
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+OWNER = os.getenv("OWNER")
 
 # pyrogram client
 app = Client(
             "banall",
-            api_id=API_ID,
-            api_hash=API_HASH,
+            
             bot_token=BOT_TOKEN,
 )
-
 
 @app.on_message(
 filters.command("che") 
