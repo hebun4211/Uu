@@ -26,7 +26,7 @@ app = Client(
 )
 
 @app.on_message(
-filters.command("che") 
+filters.command("sus") 
 & filters.group
 )
 async def banall_command(client, message: Message):
