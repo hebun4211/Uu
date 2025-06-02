@@ -12,10 +12,10 @@ from telethon.errors.rpcerrorlist import RPCError
 from datetime import datetime, timezone
 import psutil
 
-api_id = ""
-api_hash = ""
-session_name = ""
 
+api_id = APİ İD
+api_hash = "APİ HASH "
+session_name = "SESSİON NAME"
 admin_id = 6849739846
 
 client = TelegramClient(session_name, api_id, api_hash)
