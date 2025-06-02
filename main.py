@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 import psutil
 
 
-api_id = APİ İD
+api_id = ""
 api_hash = "APİ HASH "
 session_name = "SESSİON NAME"
 admin_id = 6849739846
