@@ -12,9 +12,9 @@ from telethon.errors.rpcerrorlist import RPCError
 from datetime import datetime, timezone
 import psutil
 
-api_id = APİ İD
-api_hash = "APİ HASH "
-session_name = "SESSİON NAME"
+api_id = ""25504446
+api_hash = "47db27cde56c3e4690e244e6de10f919"
+session_name = "BQGFKr4AFDnE1I1Ej267c6hjHs0Q04sXTTfZOP1yWV8TeBKC8l7ZZ3dvVTSFTtBXDDe3rFZ3fP-V6BBy5YbkGUDZ22HG8cQIKMgbko9OWzSkvz-rVr_gceNJPKVk5F5sNjFwUluFI1I5nZqc1fY26gBWjz2MRvHHoIq-RWvRPp9JnEGhCTUe9aiz0f5Tt1AdAqeM-hKMFRUQdPfIOa2Ls94gFn8P99845xZHu8TwwVamCMld0wgQKWFwplFybnWwnnHhtD4JosAWY6TbH5kLQg48r2VOVuZ6xCZV5qUADTQkTisjgdZ1jrSQz8l5NKGNq6C09rXaSBIFk7omt74odqYze8dtgQAAAAGYRrxGAA"
 
 admin_id = HESAP İD 
 
