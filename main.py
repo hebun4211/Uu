@@ -120,6 +120,6 @@ print("Userbot (Session String ile) başlatılıyor...")
 with client:
     client.run_until_disconnected()
             add_process_running.pop(chat_id, None)
-
+main.py()
 client.start()
 client.run_until_disconnected()
